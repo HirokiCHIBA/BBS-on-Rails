@@ -52,6 +52,7 @@ App.controller 'PostsCtrl', ($scope, Post) ->
   channel.bind "created", (message) ->
     lastId = $scope.posts[0].id
     Post.query 'last_id': lastId, (posts) ->
-      # 表示件数を維持
-      $scope.posts.splice(-1, posts.length)
+      if ($scope.posts.length >= 10)
+        # 表示件数を維持
+        $scope.posts.splice(-1, posts.length)
       $scope.posts = posts.concat $scope.posts
