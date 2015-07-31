@@ -19,7 +19,7 @@ h1 a {
 }
 
 .content {
-  white-space: pre;
+  white-space: pre-wrap;
 }
 
 .has-error .error-message {
