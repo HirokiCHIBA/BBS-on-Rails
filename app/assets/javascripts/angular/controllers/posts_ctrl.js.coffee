@@ -50,7 +50,7 @@ App.controller 'PostsCtrl', ($scope, Post) ->
   channel = dispatcher.subscribe("streaming")
   # created発生時に未読分を読み込み
   channel.bind "created", (message) ->
-    lastId = $scope.posts[0].id
+    lastId = if $scope.posts.length > 0 then $scope.posts[0].id else 0
     Post.query 'last_id': lastId, (posts) ->
       if ($scope.posts.length >= 10)
         # 表示件数を維持
